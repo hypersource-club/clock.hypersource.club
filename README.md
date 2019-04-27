@@ -21,7 +21,7 @@ or with `npx`
 $ npx clock.hypersource.club --port 3000 --host '127.0.0.1'
 ```
 
-clock a message with
+Create a new clock stream with
 [hypersource-client](https://github.com/jwerle/hypersource-client).
 
 ```sh
