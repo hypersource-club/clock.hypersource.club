@@ -3,7 +3,11 @@
   "version": "0.1.1",
   "description": "A HyperSource server that runs a hyperclock",
   "main": "index.js",
+  "bin": {
+    "clock.hypersource.club": "bin/clock.hypersource.club"
+  },
   "scripts": {
+    "start": "bin/clock.hypersource.club",
     "test": ":"
   },
   "repository": {
