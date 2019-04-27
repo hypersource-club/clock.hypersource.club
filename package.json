@@ -1,6 +1,6 @@
 {
   "name": "clock.hypersource.club",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A HyperSource server that runs a hyperclock",
   "main": "index.js",
   "scripts": {
