@@ -1,0 +1,71 @@
+#!/usr/bin/env node
+
+const createServer = require('../')
+const minimist = require('minimist')
+const pkg = require('../package.json')
+
+const argv = minimist(process.argv.slice(2), {
+  number: [
+    'port'
+  ],
+  string: [
+    'host'
+  ],
+  boolean: [
+    'help',
+    'debug',
+    'version'
+  ],
+  alias: {
+    'port': 'p',
+    'host': 'H',
+    'help': 'h',
+    'debug': 'D',
+    'version': 'V',
+  },
+  default: {
+    port: 3000,
+    host: '127.0.0.1',
+  }
+})
+
+const usage = `usage: clock.hypersource.club [-hVD] [options]
+where options can be:
+
+  -p, --port <port>    Port for server to listen on (Default: 3000)
+  -H, --host <host>    Host for server to listen on (Default: '127.0.0.1')
+  -h, --help           Show this message
+  -D, --debug          Enable debug output (DEBUG='clock.hypersource.club')
+  -V, --version        Output program version
+`
+
+if (argv.help) {
+  console.log(usage)
+  process.exit(0)
+}
+
+if (argv.version) {
+  console.log(pkg.version)
+  process.exit(0)
+}
+
+if (argv.debug) {
+  require('debug').enable('clock.hypersource.club')
+  if (process.env.DEBUG) {
+    require('debug').enable(process.env.DEBUG)
+  }
+}
+
+const server = createServer(argv)
+server.listen(parseInt(argv.port) || 0, argv.host, (err) => {
+  if (err) {
+    console.error('ERR', err)
+  } else {
+    const { protocol, address, port } = server.address()
+    console.log('Listening on %s//%s:%s', protocol, address, port)
+  }
+})
+
+server.on('request', (req) => {
+  console.log('%s %s', req.method, req.url)
+})

@@ -1,0 +1,31 @@
+{
+  "name": "clock.hypersource.club",
+  "version": "0.0.1",
+  "description": "A HyperSource server that runs a hyperclock",
+  "main": "index.js",
+  "scripts": {
+    "test": ":"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hypersource-club/clock.hypersource.club.git"
+  },
+  "keywords": [
+    "hypersource",
+    "club",
+    "hyperclock",
+    "server"
+  ],
+  "author": "Joseph Werle <joseph.werle@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hypersource-club/clock.hypersource.club/issues"
+  },
+  "homepage": "https://github.com/hypersource-club/clock.hypersource.club#readme",
+  "dependencies": {
+    "hypercore": "^6.26.0"
+  },
+  "devDependencies": {
+    "hypersource-client": "^0.1.2"
+  }
+}
